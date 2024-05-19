@@ -4,11 +4,18 @@
 import React from "react";
 
 class MyComponent extends React.Component {
+    
+    state = {
+        name: 'Trung',
+        address: 'Hanoi',
+        age : 26
+    }
+    
     //JSX
     render(){
         return (
             <div>
-                My first Component
+                My name is {this.state.name} and I'm from {this.state.address}
             </div>
         );
     }
