@@ -17,7 +17,14 @@ class MyComponent extends React.Component {
     }
 
     handleAddNewUser = (userObj) =>{
-        console.log('check date forn', userObj)
+        // let listUsersNew = this.state.listUsers;
+        // listUsersNew.unshift(userObj);
+        // listUsersNew.push(userObj);
+
+        // this.setState({
+        //     listUsers:listUsersNew
+        // })
+
         this.setState({
             listUsers: [userObj,...this.state.listUsers]
         })
@@ -27,7 +34,8 @@ class MyComponent extends React.Component {
     render(){
         // Dry : don't repeat yourself
         return (
-            <div>
+        <div>
+            <div className="a">
                 <AddUserinfor 
                 handleAddNewUser={this.handleAddNewUser}
                 />
@@ -36,6 +44,10 @@ class MyComponent extends React.Component {
                 listUsers={this.state.listUsers}
                 />
             </div>
+            <div className="b">
+
+            </div>
+        </div>    
         );
     }
 }
