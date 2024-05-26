@@ -1,54 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import './DisplayInfor.scss'
 // import logo from './../logo.svg'
 
-class DisplayInfor extends React.Component{
+//stateless vs stateful
+// class DisplayInfor extends React.Component{
 
-    constructor(props) {
-        console.log('>>> call constructor: 1')
-        super(props);
-        // babel compiler
-        this.state = {
-            isShowListUser: true
-        }
+
+//     render(){
+//         console.log('call me render')
+//         // Destructuring array/object
+//         const {listUsers} = this.props;
+//         //props
+//         return(
+//         <div className="display-infor-container">
+//             {true && 
+//              <>
+//                 {listUsers.map((user) =>{
+    
+//                     return (
+//                                 <div key ={user.id} className={+user.age > 18 ? "green" : "red"}>
+//                                     <div>
+//                                     <div>My name is {user.name}</div>
+//                                     <div>My age is {user.age}</div>
+//                                     </div>
+//                                     <div>
+//                                         <button onClick= {() => this.props.handleDeleteUser(user.id)}>Delete</button>
+//                                     </div>
+
+//                                     <hr />
+//                                 </div>
+//                             )
+//                 })}
+//                 </>
+//              }
+//         </div>
+//         )
+//     }
+// }
+
+const DisplayInfor = (props) => {
+    const {listUsers} = props;
+
+    const [isShowHideListUser, setShowHideListUser] = useState(true);
+
+    const handleShowHideListUser = () => {
+        setShowHideListUser (!isShowHideListUser)
     }
-
-    componentDidMount(){
-        console.log('>>> call me component did mount')
-        setTimeout(() => {
-            document.title = 'trung duc'
-        }, 3000);
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot){
-        console.log('component did update', this.props, prevProps)
-        if(this.props.listUsers !== prevProps.listUsers){
-            if(this.props.listUsers.length === 5){
-                alert('you got 5')
-            }
-        }
-    }
-
-    handleShowHide(){
-        this.setState({
-            isShowListUser: !this.state.isShowListUser
-        })
-    }
-
-    render(){
-        console.log('call me render')
-        // Destructuring array/object
-        const {listUsers} = this.props;
-        //props
         return(
         <div className="display-infor-container">
-            {/* <img src={logo}/> */}
             <div>
-                <span onClick={() =>{this.handleShowHide()}}>
-                    {this.state.isShowListUser === true ? "Hile list users: " : "Show list users: " }
-                </span>
+                <span onClick={() => handleShowHideListUser()}>
+                    {isShowHideListUser === true ? 'Hide list Users' : "Show List User"}
+                    </span>
             </div>
-            {this.state.isShowListUser && 
+            {isShowHideListUser && 
              <>
                 {listUsers.map((user) =>{
     
@@ -59,7 +64,7 @@ class DisplayInfor extends React.Component{
                                     <div>My age is {user.age}</div>
                                     </div>
                                     <div>
-                                        <button onClick= {() => this.props.handleDeleteUser(user.id)}>Delete</button>
+                                        <button onClick= {() =>props.handleDeleteUser(user.id)}>Delete</button>
                                     </div>
 
                                     <hr />
@@ -70,7 +75,6 @@ class DisplayInfor extends React.Component{
              }
         </div>
         )
-    }
 }
 
 export default DisplayInfor
