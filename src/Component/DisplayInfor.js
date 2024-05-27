@@ -42,6 +42,7 @@ const DisplayInfor = (props) => {
     const {listUsers} = props;
 
     const [isShowHideListUser, setShowHideListUser] = useState(true);
+    // Destructuring assgiment
 
     const handleShowHideListUser = () => {
         setShowHideListUser (!isShowHideListUser)
