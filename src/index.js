@@ -15,19 +15,17 @@ import Admin from './component/Admin/Admin';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter> 
   <Provider store={store}>
     {/* <React.StrictMode> */}
-     
+     <BrowserRouter> 
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/users" element={<User />} />
         <Route path="/admins" element={<Admin />} />
       </Routes>
-    
+    </BrowserRouter> 
     {/* </React.StrictMode> */}
   </Provider>
-  </BrowserRouter> 
 );
 
 // If you want to start measuring performance in your app, pass a function
