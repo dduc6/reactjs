@@ -24,6 +24,8 @@ const Header =() => {
             <Nav.Link href="/admins">Admin</Nav.Link> */}
           </Nav>
           <Nav>
+            <button className='btn-login'>Log In</button>
+            <button className='btn-signup'>Sign UP</button>
             <NavDropdown title="Settings" id="basic-nav-dropdown">
               <NavDropdown.Item >Login</NavDropdown.Item>
               <NavDropdown.Item >Log Out</NavDropdown.Item>
