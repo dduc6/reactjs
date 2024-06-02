@@ -3,6 +3,10 @@ import { ProSidebar, Sidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarCon
 
 import {FaTachometerAlt, FaGem, Falist, FaGithub, FaRegLaughWink, FaHeart} from 'react-icons/fa'
 import sidebarBg from '../../assets/Hạc.jpg';
+import {DiReact} from "react-icons/di";
+import {MdDashboard} from "react-icons/md";
+
+import './Sidebar.scss';
 const DucSidebar = ({image, collapsed, toggled, handleToggleSidebar}) => {
     return (
     <>
@@ -26,7 +30,8 @@ const DucSidebar = ({image, collapsed, toggled, handleToggleSidebar}) => {
                         whiteSpace: "nowrap",
                     }}
                 >
-                    Sugar Baby
+                    <DiReact size ={'3em'} color= {'00bfff'} />
+                    <span>Sugar Baby</span>
                 </div>
             </SidebarHeader>
 
@@ -34,17 +39,17 @@ const DucSidebar = ({image, collapsed, toggled, handleToggleSidebar}) => {
                 <Menu iconShape="circle">
                     <MenuItem
                         icon={<FaTachometerAlt />}
-                        suffix={<span className="badge red">new</span>}
                     >
                         Dashboard
                     </MenuItem>
-                    <MenuItem icon={<FaGem />}>Components</MenuItem>
-                    <SubMenu>
-                        suffix={<span className="badge yellow">3</span>}
-                        icon={<FaRegLaughWink />}
-                        <MenuItem>1</MenuItem>
-                        <MenuItem>2</MenuItem>
-                        <MenuItem>3</MenuItem>
+                    <SubMenu
+                        icon = {<FaGem />}
+                        title ="Features"
+                    >
+                        
+                        <MenuItem>Quản lý User</MenuItem>
+                        <MenuItem>Quản lý Bài Quiz</MenuItem>
+                        <MenuItem>Quản lý Câu Hỏi</MenuItem>
                     </SubMenu>
                 </Menu>
             </SidebarContent>
@@ -56,14 +61,14 @@ const DucSidebar = ({image, collapsed, toggled, handleToggleSidebar}) => {
                     }}
                 >
                     <a
-                        href="https://github.com/creativetimofficial"
+                        href="https://github.com/tduc16"
                         target="_blank"
                         className="sidebar-btn"
                         rel="noopener noreferrer"
                     >
                         <FaGithub />
                         <span style={{ whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>
-                            viewSource
+                           &#169; Trung Duc 
                         </span>
                     </a>
                 </div>
