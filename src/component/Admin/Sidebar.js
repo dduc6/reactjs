@@ -42,7 +42,7 @@ const DucSidebar = ({image, collapsed, toggled, handleToggleSidebar}) => {
                         icon={<FaTachometerAlt />}
                     >
                         Dashboard
-                        <Link to="/admin" />
+                        <Link to="/admins" />
                     </MenuItem>
                     <SubMenu
                         icon = {<FaGem />}
@@ -50,7 +50,7 @@ const DucSidebar = ({image, collapsed, toggled, handleToggleSidebar}) => {
                     >
                         
                         <MenuItem>Quản lý User
-                            <Link to="/admin/manage-users" />
+                            <Link to="/admins/manage-users" />
                         </MenuItem>
                         <MenuItem>Quản lý Bài Quiz</MenuItem>
                         <MenuItem>Quản lý Câu Hỏi</MenuItem>
