@@ -5,6 +5,7 @@ import {FaTachometerAlt, FaGem, Falist, FaGithub, FaRegLaughWink, FaHeart} from 
 import sidebarBg from '../../assets/Hạc.jpg';
 import {DiReact} from "react-icons/di";
 import {MdDashboard} from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 import './Sidebar.scss';
 const DucSidebar = ({image, collapsed, toggled, handleToggleSidebar}) => {
@@ -41,13 +42,16 @@ const DucSidebar = ({image, collapsed, toggled, handleToggleSidebar}) => {
                         icon={<FaTachometerAlt />}
                     >
                         Dashboard
+                        <Link to="/admin" />
                     </MenuItem>
                     <SubMenu
                         icon = {<FaGem />}
                         title ="Features"
                     >
                         
-                        <MenuItem>Quản lý User</MenuItem>
+                        <MenuItem>Quản lý User
+                            <Link to="/admin/manage-users" />
+                        </MenuItem>
                         <MenuItem>Quản lý Bài Quiz</MenuItem>
                         <MenuItem>Quản lý Câu Hỏi</MenuItem>
                     </SubMenu>

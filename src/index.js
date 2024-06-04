@@ -13,6 +13,8 @@ import {
 import User from './component/User/User';
 import Admin from './component/Admin/Admin';
 import HomePage from './component/Home/HomePage';
+import ManageUser from './component/Admin/Content/ManageUser';
+import Dashboard from './component/Admin/Content/DashBoar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,11 +23,14 @@ root.render(
      <BrowserRouter> 
       <Routes>
         <Route path="/" element={<App />} >
-          {/* <Route index element={<HomePage />} /> */}
+          <Route index element={<HomePage />} />
           <Route path="/users" element={<User />} />
           
         </Route>
-        <Route path="/admins" element={<Admin />} />
+        <Route path="admins" element={<Admin />} >
+          <Route index element={<Dashboard />} />
+          <Route path="manage-users" element={<ManageUser />} />
+        </Route>
       </Routes>
       
     </BrowserRouter> 
