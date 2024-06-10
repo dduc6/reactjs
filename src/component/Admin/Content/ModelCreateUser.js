@@ -3,7 +3,8 @@ import React, {useState} from 'react';
 import { Alert, Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { FcPlus } from "react-icons/fc";
-
+import { Toast } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 const ModalCreateUser =(props) => {
     const{ show,setShow } = props;
 
@@ -36,15 +37,28 @@ const ModalCreateUser =(props) => {
       
     }
 
+    const validateEmail = (email) => {
+      return String(email)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    }
+
     const handleSubmitCreateUser = async() => {
-      //  let data = {
-      //      email:email,
-      //      password:  password,
-      //      username: username,
-      //      role: role,
-      //      userImage:image
-      //  }
-      //  console.log(data)
+      //Validate 
+      const isValidEmail = validateEmail(email);
+      if(!isValidEmail){
+        toast.error("Invalid email")
+        return;
+      }
+      if(!password){
+        toast.error("Invalid password")
+        return;
+      }
+
+      //submit data
+
 
        const data = new FormData();
        data.append('email',email);
@@ -53,16 +67,19 @@ const ModalCreateUser =(props) => {
        data.append('role', role);
        data.append('userImage',image);
 
-       let res = axios.post('http://localhost:8081/api/v1/participant',data)
-       console.log("check res",res)
+       let res = await axios.post('http://localhost:8081/api/v1/participant',data)
+       console.log("check res",res.data)
+       if(res.data && res.data.EC === 0){
+         toast.success(res.data.EM)
+         handleClose();
+       }
+       if (res.data && res.data.EC !== 0){
+         toast.error(res.data.EM)
+       }
     }
 
     return (
         <>
-            {/* <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
-            </Button> */}
-
             <Modal
              show={show} 
              onHide={handleClose} 
@@ -104,7 +121,7 @@ const ModalCreateUser =(props) => {
   </div>
   <div className="mb-3">
     <label  className="form-label">Role</label>
-    <select  className="form-select" onChange={(event) => setRole(event.target.value)}>
+    <select   defaultValue="USER" className="form-select" onChange={(event) => setRole(event.target.value)}>
       <option selected value="USER">USER</option>
       <option  value="ADMIN">ADMIN</option>
     </select>

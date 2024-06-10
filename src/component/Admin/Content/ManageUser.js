@@ -5,6 +5,7 @@ import { useState } from 'react';
 const ManageUser = (props) => {
 
     const[showModalCreateUser, setShowModalCreateUser] = useState(false);
+
     return(
         <div className="manage-user-container">
             <div className="title">
@@ -23,8 +24,11 @@ const ManageUser = (props) => {
                 </div>
                 <ModalCreateUser 
                 show={showModalCreateUser} 
-                setShow={setShowModalCreateUser}/>
+                setShow={setShowModalCreateUser}
+                
+                />
             </div>
+            
         </div>
     )
 }
