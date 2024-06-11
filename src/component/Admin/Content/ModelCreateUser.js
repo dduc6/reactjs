@@ -3,8 +3,6 @@ import React, {useState} from 'react';
 import { Alert, Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { FcPlus } from "react-icons/fc";
-import { Toast } from 'react-bootstrap';
-import { toast } from 'react-toastify';
 const ModalCreateUser =(props) => {
     const{ show,setShow } = props;
 
@@ -49,13 +47,13 @@ const ModalCreateUser =(props) => {
       //Validate 
       const isValidEmail = validateEmail(email);
       if(!isValidEmail){
-        toast.error("Invalid email")
+        alert("Invalid email")
         return;
       }
-      if(!password){
-        toast.error("Invalid password")
-        return;
-      }
+      // if(!password){
+      //   toast.error("Invalid password")
+      //   return;
+      // }
 
       //submit data
 
@@ -69,13 +67,13 @@ const ModalCreateUser =(props) => {
 
        let res = await axios.post('http://localhost:8081/api/v1/participant',data)
        console.log("check res",res.data)
-       if(res.data && res.data.EC === 0){
-         toast.success(res.data.EM)
-         handleClose();
-       }
-       if (res.data && res.data.EC !== 0){
-         toast.error(res.data.EM)
-       }
+      //  if(res.data && res.data.EC === 0){
+      //    toast.success(res.data.EM)
+      //    handleClose();
+      //  }
+      //  if (res.data && res.data.EC !== 0){
+      //    toast.error(res.data.EM)
+      //  }
     }
 
     return (
