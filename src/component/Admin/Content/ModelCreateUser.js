@@ -47,11 +47,11 @@ const ModalCreateUser =(props) => {
 
     const handleSubmitCreateUser = async() => {
       //Validate 
-      // const isValidEmail = validateEmail(email);
-      // if(!isValidEmail){
-      //   alert("Invalid email")
-      //   return;
-      // }
+      const isValidEmail = validateEmail(email);
+      if(!isValidEmail){
+        alert("Invalid email")
+        return;
+      }
       if(!password){
         alert("Invalid password")
         return;

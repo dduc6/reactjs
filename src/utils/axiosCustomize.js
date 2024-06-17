@@ -11,7 +11,6 @@ instance.interceptors.request.use(function (config) {
   });
 
 instance.interceptors.response.use(function (response) {
-    console.log("trungduc",response)
     return response && response.data ? response.data : response;
   }, function (error) {
     return error && error.response && error.response.data ? error.response.data : Promise.reject(error);
