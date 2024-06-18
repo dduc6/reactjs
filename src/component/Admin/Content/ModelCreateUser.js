@@ -63,6 +63,7 @@ const ModalCreateUser =(props) => {
        if (data && data.EC === 0) {
         alert(data.EM)
         handleClose();
+        await props.fetchListUsers();
        }
        if (data && data.EC !== 0) {
         alert(data.EM);
